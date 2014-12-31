@@ -1,1 +1,1 @@
-require "heroku/command/hive_deploy"
+require "heroku/command/build"

@@ -5,8 +5,8 @@ require 'json'
 require 'uri'
 require 'net/http'
 
-class Heroku::Command::Deploy < Heroku::Command::BaseWithApp
-  def hive
+class Heroku::Command::Build < Heroku::Command::BaseWithApp
+  def index
     git_uri = args.shift
     raise Heroku::Command::CommandFailed, "No git uri supplied.\nSpecify which git uri to package using as an argument" unless git_uri
     git_version = nil
@@ -47,7 +47,6 @@ class Heroku::Command::Deploy < Heroku::Command::BaseWithApp
   private
   def app_build(env)
     change_env(env) do
-      `npm install; npm run build; rm -rf node_modules`
     end
   end
 

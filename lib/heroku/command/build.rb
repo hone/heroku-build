@@ -71,7 +71,7 @@ class Heroku::Command::Build < Heroku::Command::BaseWithApp
       Dir.chdir(dir) do
         app_build(env)
         git_version = `git rev-parse HEAD`.chomp
-        `tar czfv ../build.tgz *`
+        `tar czfv ../build.tgz .[^.]* .*`
       end
 
       `cp build.tgz /tmp`
